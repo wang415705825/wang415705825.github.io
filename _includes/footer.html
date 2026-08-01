@@ -1,0 +1,30 @@
+{% assign profile = site.data.profile %}
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div>
+      <p class="footer-name">{{ profile.name | default: site.title }}</p>
+      <p class="footer-note">Research in real estate, investments, and sustainability.</p>
+    </div>
+    {% if profile.social %}
+      <nav aria-label="Academic and social profiles">
+        <ul class="footer-links">
+          {% for social in profile.social %}
+            <li><a href="{{ social.url }}">{{ social.label }} <span aria-hidden="true">↗</span></a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endif %}
+    <div class="footer-contact">
+      {% if profile.email %}<a href="mailto:{{ profile.email }}">{{ profile.email }}</a>{% endif %}
+      {% if profile.office %}<span>{{ profile.office }}</span>{% endif %}
+    </div>
+  </div>
+  <div class="shell footer-bottom">
+    <span>© {{ 'now' | date: '%Y' }} {{ profile.name | default: site.title }}</span>
+    <span>Independent design and implementation · Built with Jekyll</span>
+  </div>
+</footer>
+
+<button class="back-to-top" type="button" aria-label="Back to top" title="Back to top" data-back-to-top hidden>
+  <span aria-hidden="true">↑</span>
+</button>

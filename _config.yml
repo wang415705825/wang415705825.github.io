@@ -1,0 +1,57 @@
+title: "Chongyu (Michael) Wang"
+description: >-
+  Academic website of Chongyu (Michael) Wang, Assistant Professor and Francis
+  Nardozza Fellow of Real Estate at Florida State University.
+url: "https://wang415705825.github.io"
+baseurl: ""
+lang: en
+timezone: America/New_York
+repository: wang415705825/wang415705825.github.io
+logo: /assets/images/chongyu-wang.jpg
+social_image: /assets/images/social-card.png
+
+markdown: kramdown
+permalink: pretty
+
+collections:
+  research:
+    output: true
+    permalink: /research/:name/
+  news:
+    output: false
+  resources:
+    output: true
+    permalink: /resources/:name/
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: page
+  - scope:
+      path: ""
+      type: research
+    values:
+      layout: research
+  - scope:
+      path: ""
+      type: resources
+    values:
+      layout: resource
+
+plugins:
+  - jekyll-sitemap
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+liquid:
+  error_mode: strict
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - scripts
+  - vendor

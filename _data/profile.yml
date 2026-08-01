@@ -1,0 +1,40 @@
+name: "Chongyu Wang"
+preferred_name: "Chongyu (Michael) Wang"
+chinese_name: "王崇宇"
+title: "Assistant Professor"
+fellowship: "Francis Nardozza Fellow of Real Estate"
+institution: "Florida State University"
+institution_url: "https://www.fsu.edu/"
+college: "Herbert Wertheim College of Business"
+college_url: "https://wertheim.fsu.edu/"
+department: "Department of Risk Management/Insurance, Real Estate and Legal Studies"
+department_url: "https://wertheim.fsu.edu/departments/rmirels"
+email: "cwang@wertheim.fsu.edu"
+office: "4116 WCB"
+location: "Tallahassee, Florida"
+portrait: "/assets/images/chongyu-wang.jpg"
+portrait_alt: "Portrait of Chongyu (Michael) Wang"
+cv: "/assets/Chongyu_Wang_CV.pdf"
+bio: >-
+  I study how location, institutions, technology, and environmental risk shape
+  real asset markets and investment decisions. My work spans commercial real
+  estate, asset pricing, sustainability, climate finance, and emerging
+  technologies.
+research_interests:
+  - "Real Estate"
+  - "Investment"
+  - "Sustainability"
+  - "Climate Finance"
+social:
+  - label: "Google Scholar"
+    url: "https://scholar.google.com/citations?user=mtUWELkAAAAJ&hl=en"
+  - label: "SSRN"
+    url: "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=1889382"
+  - label: "ORCID"
+    url: "https://orcid.org/0000-0003-3754-2383"
+  - label: "ResearchGate"
+    url: "https://www.researchgate.net/profile/Chongyu-Wang"
+  - label: "GitHub"
+    url: "https://github.com/wang415705825"
+  - label: "X"
+    url: "https://x.com/wang_chongyu"

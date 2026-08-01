@@ -1,0 +1,69 @@
+---
+layout: default
+---
+<article class="detail-page">
+  <header class="detail-hero section section--garnet">
+    <div class="shell shell--narrow">
+      <a class="breadcrumb" href="{{ '/research/' | relative_url }}"><span aria-hidden="true">←</span> All research</a>
+      <p class="eyebrow eyebrow--light">
+        {% case page.type %}
+          {% when 'publication' %}Publication
+          {% when 'working-paper' %}Working paper
+          {% when 'work-in-progress' %}Work in progress
+          {% else %}{{ page.type | replace: '-', ' ' | capitalize }}
+        {% endcase %}
+        {% if page.year %}<span aria-hidden="true"> · </span>{{ page.year }}{% endif %}
+      </p>
+      <h1{% if page.language %} lang="{{ page.language | escape }}"{% endif %}>{{ page.title }}</h1>
+      {% if page.authors %}<p class="detail-authors">{{ page.authors | join: ', ' }}</p>{% endif %}
+      {% if page.venue or page.status %}
+        <p class="detail-status">
+          {% if page.venue %}<cite>{{ page.venue }}</cite>{% endif %}
+          {% if page.venue and page.status %}<span aria-hidden="true"> · </span>{% endif %}
+          {{ page.status }}
+        </p>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="section">
+    <div class="shell shell--narrow detail-grid">
+      <div class="prose">
+        {% if page.summary %}
+          <h2>Overview</h2>
+          <p class="lede">{{ page.summary }}</p>
+        {% endif %}
+        {{ content }}
+
+        {% if page.awards %}
+          <section class="detail-note" aria-labelledby="recognition-heading">
+            <h2 id="recognition-heading">Recognition</h2>
+            <ul>{% for award in page.awards %}<li>{{ award }}</li>{% endfor %}</ul>
+          </section>
+        {% endif %}
+
+        {% if page.funding %}
+          <section class="detail-note" aria-labelledby="funding-heading">
+            <h2 id="funding-heading">Funding</h2>
+            <ul>{% for item in page.funding %}<li>{{ item }}</li>{% endfor %}</ul>
+          </section>
+        {% endif %}
+      </div>
+
+      <aside class="detail-aside" aria-label="Paper information">
+        {% if page.topics %}
+          <h2>Topics</h2>
+          <ul class="tag-list">{% for topic in page.topics %}<li>{{ topic }}</li>{% endfor %}</ul>
+        {% endif %}
+        {% if page.links %}
+          <h2>Links</h2>
+          <ul class="link-stack">
+            {% for link in page.links %}
+              <li><a href="{{ link.url }}">{{ link.label }} <span aria-hidden="true">↗</span></a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </aside>
+    </div>
+  </div>
+</article>

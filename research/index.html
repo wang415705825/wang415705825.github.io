@@ -1,0 +1,66 @@
+---
+layout: default
+title: Research
+description: Publications, working papers, and work in progress by Chongyu (Michael) Wang.
+permalink: /research/
+---
+<header class="page-hero section">
+  <div class="shell shell--narrow-left">
+    <p class="eyebrow">Research portfolio</p>
+    <h1>Questions at the intersection of places, capital, and change.</h1>
+    <p class="page-hero__intro">Explore publications and current projects across real estate, investments, sustainability, climate risk, and technology.</p>
+  </div>
+</header>
+
+{% assign research = site.research | sort: 'year' | reverse %}
+{% assign all_topics = '' | split: '' %}
+{% for paper in research %}{% assign all_topics = all_topics | concat: paper.topics %}{% endfor %}
+{% assign all_topics = all_topics | uniq | sort %}
+
+<section class="section section--tinted research-catalog" aria-labelledby="research-catalog-heading">
+  <div class="shell">
+    <div class="catalog-heading">
+      <div>
+        <p class="eyebrow">Complete record</p>
+        <h2 id="research-catalog-heading">Research catalogue</h2>
+      </div>
+      <p data-results-count aria-live="polite">{{ research.size }} items</p>
+    </div>
+
+    <div class="filter-panel" data-filter-panel aria-label="Filter research">
+      <div class="filter-search">
+        <label for="research-search">Search title, author, venue, or topic</label>
+        <input id="research-search" type="search" autocomplete="off" placeholder="Search research…" data-research-search>
+      </div>
+
+      <div class="filter-row" role="group" aria-label="Filter by publication status">
+        <span class="filter-label">Status</span>
+        <div class="filter-buttons" data-filter-group="type">
+          <button type="button" class="filter-button is-active" data-filter-value="all" aria-pressed="true">All</button>
+          <button type="button" class="filter-button" data-filter-value="publication" aria-pressed="false">Publications</button>
+          <button type="button" class="filter-button" data-filter-value="working-paper" aria-pressed="false">Working papers</button>
+          <button type="button" class="filter-button" data-filter-value="work-in-progress" aria-pressed="false">Work in progress</button>
+        </div>
+      </div>
+
+      {% if all_topics.size > 0 %}
+        <div class="filter-row" role="group" aria-label="Filter by research topic">
+          <span class="filter-label">Topic</span>
+          <div class="filter-buttons" data-filter-group="topic">
+            <button type="button" class="filter-button is-active" data-filter-value="all" aria-pressed="true">All</button>
+            {% for topic in all_topics %}<button type="button" class="filter-button" data-filter-value="{{ topic | slugify }}" aria-pressed="false">{{ topic }}</button>{% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="research-grid" data-research-grid>
+      {% for paper in research %}{% include research-card.html paper=paper %}{% endfor %}
+    </div>
+    <div class="empty-state" data-empty-state hidden>
+      <h3>No matching research</h3>
+      <p>Try a broader search or reset the filters.</p>
+      <button class="button button--secondary" type="button" data-reset-filters>Reset filters</button>
+    </div>
+  </div>
+</section>

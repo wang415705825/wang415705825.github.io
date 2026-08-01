@@ -1,0 +1,10 @@
+- name: "Geo-COVID"
+  description: >-
+    Data and code supporting research on local COVID-19 exposure and commercial
+    real estate prices.
+  url: "https://github.com/wang415705825/Geo-COVID"
+- name: "Real-Estate-Returns"
+  description: >-
+    Unlevered and property-portfolio return data used in research on asset
+    productivity, information diffusion, and commercial real estate returns.
+  url: "https://github.com/wang415705825/Real-Estate-Returns"

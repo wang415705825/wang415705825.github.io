@@ -1,0 +1,52 @@
+{% assign profile = site.data.profile %}
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header" data-site-header>
+  <div class="shell header-inner">
+    <a class="site-mark" href="{{ '/' | relative_url }}" aria-label="{{ profile.name | default: site.title | escape }} — home">
+      <span class="site-mark__initials" aria-hidden="true">CW</span>
+      <span class="site-mark__name">{{ profile.preferred_name | default: profile.name | default: site.title }}</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" data-nav-toggle>
+      <span class="nav-toggle__label">Menu</span>
+      <span class="nav-toggle__lines" aria-hidden="true"><span></span><span></span></span>
+    </button>
+
+    <nav class="site-nav" id="site-navigation" aria-label="Primary navigation" data-site-nav>
+      <ul>
+        {% assign navigation = site.data.navigation %}
+        {% if navigation %}
+          {% for item in navigation %}
+            {% if item.url contains '://' %}
+              {% assign nav_url = item.url %}
+            {% else %}
+              {% assign nav_url = item.url | relative_url %}
+            {% endif %}
+            {% assign nav_current = false %}
+            {% if page.url == item.url %}
+              {% assign nav_current = true %}
+            {% elsif item.url == '/research/' and page.url contains '/research/' %}
+              {% assign nav_current = true %}
+            {% elsif item.url == '/resources/' and page.url contains '/resources/' %}
+              {% assign nav_current = true %}
+            {% endif %}
+            <li>
+              <a href="{{ nav_url }}"{% if nav_current %} aria-current="page"{% endif %}>{{ item.label }}</a>
+            </li>
+          {% endfor %}
+        {% else %}
+          <li><a href="{{ '/#about' | relative_url }}">About</a></li>
+          <li><a href="{{ '/#news' | relative_url }}">News</a></li>
+          <li><a href="{{ '/research/' | relative_url }}"{% if page.url contains '/research/' %} aria-current="page"{% endif %}>Research</a></li>
+          <li><a href="{{ '/#experience' | relative_url }}">Experience</a></li>
+          <li><a href="{{ '/#teaching-service' | relative_url }}">Teaching &amp; Service</a></li>
+          <li><a href="{{ '/#honors' | relative_url }}">Honors</a></li>
+          <li><a href="{{ '/resources/' | relative_url }}"{% if page.url contains '/resources/' %} aria-current="page"{% endif %}>Resources</a></li>
+        {% endif %}
+      </ul>
+      {% if profile.cv %}
+        <a class="button button--compact" href="{{ profile.cv | relative_url }}">CV <span aria-hidden="true">↗</span></a>
+      {% endif %}
+    </nav>
+  </div>
+</header>

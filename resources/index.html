@@ -1,0 +1,40 @@
+---
+layout: default
+title: Resources
+description: Research, teaching, writing, and professional resources curated by Chongyu (Michael) Wang.
+permalink: /resources/
+---
+<header class="page-hero page-hero--resources section">
+  <div class="shell shell--narrow-left">
+    <p class="eyebrow">Working library</p>
+    <h1>Resources for careful research and clearer communication.</h1>
+    <p class="page-hero__intro">A curated entry point to guides, references, and tools developed through research, teaching, and practice.</p>
+  </div>
+</header>
+
+{% assign ordered_resources = site.resources | sort: 'order' %}
+{% assign resource_groups = ordered_resources | group_by: 'category' %}
+<section class="section section--tinted" aria-labelledby="resource-library-heading">
+  <div class="shell">
+    <div class="section-heading">
+      <p class="eyebrow">Browse the collection</p>
+      <h2 id="resource-library-heading">Resource library</h2>
+    </div>
+    {% for group in resource_groups %}
+      <section class="resource-group" aria-labelledby="resource-group-{{ group.name | slugify }}">
+        <h3 id="resource-group-{{ group.name | slugify }}">{{ group.name }}</h3>
+        <div class="resource-list">
+          {% for resource in group.items %}
+            <article class="resource-list-item">
+              <div>
+                <h4><a href="{{ resource.url | relative_url }}">{{ resource.title }}</a></h4>
+                {% if resource.summary %}<p>{{ resource.summary }}</p>{% endif %}
+              </div>
+              <a class="resource-list-item__arrow" href="{{ resource.url | relative_url }}" aria-label="Explore {{ resource.title | escape }}"><span aria-hidden="true">→</span></a>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+    {% endfor %}
+  </div>
+</section>

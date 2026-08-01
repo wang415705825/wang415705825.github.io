@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<article class="detail-page">
+  <header class="detail-hero section section--gold">
+    <div class="shell shell--narrow">
+      <a class="breadcrumb breadcrumb--dark" href="{{ '/resources/' | relative_url }}"><span aria-hidden="true">←</span> All resources</a>
+      {% if page.category %}<p class="eyebrow">{{ page.category }}</p>{% endif %}
+      <h1>{{ page.title }}</h1>
+      {% if page.summary %}<p class="detail-summary">{{ page.summary }}</p>{% endif %}
+      {% if page.external_url %}
+        <a class="button button--dark" href="{{ page.external_url }}">Open resource <span aria-hidden="true">↗</span></a>
+      {% endif %}
+    </div>
+  </header>
+  {% if content != empty %}
+    <div class="section">
+      <div class="shell shell--narrow prose">{{ content }}</div>
+    </div>
+  {% endif %}
+</article>

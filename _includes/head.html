@@ -1,0 +1,66 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#7a263a">
+<meta name="color-scheme" content="light">
+{% assign profile = site.data.profile %}
+{% assign canonical_path = page.url | default: '/' %}
+{% assign canonical_url = canonical_path | absolute_url %}
+{% assign meta_description = page.description | default: page.summary | default: site.description | strip_html | strip_newlines | normalize_whitespace %}
+{% if page.url == '/' or page.title == nil %}
+  {% assign meta_title = site.title %}
+{% else %}
+  {% capture meta_title %}{{ page.title }} | {{ site.title }}{% endcapture %}
+  {% assign meta_title = meta_title | strip %}
+{% endif %}
+{% assign meta_type = 'website' %}
+{% if page.collection == 'research' %}{% assign meta_type = 'article' %}{% endif %}
+<title>{{ meta_title | escape }}</title>
+<meta name="description" content="{{ meta_description | escape }}">
+<link rel="canonical" href="{{ canonical_url }}">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="{{ site.title | escape }}">
+<meta property="og:type" content="{{ meta_type }}">
+<meta property="og:title" content="{{ meta_title | escape }}">
+<meta property="og:description" content="{{ meta_description | escape }}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ meta_title | escape }}">
+<meta name="twitter:description" content="{{ meta_description | escape }}">
+{% if site.social_image %}
+  {% assign social_image_url = site.social_image | absolute_url %}
+  <meta property="og:image" content="{{ social_image_url }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Academic website of {{ profile.name | default: site.title | escape }}">
+  <meta name="twitter:image" content="{{ social_image_url }}">
+  <meta name="twitter:image:alt" content="Academic website of {{ profile.name | default: site.title | escape }}">
+{% endif %}
+
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+{% if profile.portrait %}<link rel="icon" type="image/jpeg" href="{{ profile.portrait | relative_url }}">{% endif %}
+<script>document.documentElement.classList.add('js');</script>
+<script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+
+{% assign email_uri = 'mailto:' | append: profile.email %}
+{% assign person_url = '/' | absolute_url %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": {{ profile.name | default: site.title | jsonify }},
+  "alternateName": [{{ profile.preferred_name | jsonify }}, {{ profile.chinese_name | jsonify }}],
+  "url": {{ person_url | jsonify }},
+  "jobTitle": {{ profile.title | jsonify }},
+  "email": {{ email_uri | jsonify }},{% if profile.portrait %}
+  "image": {{ profile.portrait | absolute_url | jsonify }},{% endif %}
+  "worksFor": {
+    "@type": "CollegeOrUniversity",
+    "name": {{ profile.institution | jsonify }},
+    "url": {{ profile.institution_url | jsonify }}
+  },
+  "knowsAbout": {{ profile.research_interests | jsonify }},
+  "sameAs": [
+    {% for social in profile.social %}{{ social.url | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}
+  ]
+}
+</script>

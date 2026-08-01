@@ -1,0 +1,50 @@
+{% assign paper = include.paper %}
+<article class="research-card{% if paper.featured %} research-card--featured{% endif %}" data-research-item data-type="{{ paper.type | escape }}" data-topics="{% for topic in paper.topics %}|{{ topic | slugify }}{% endfor %}|" data-search="{{ paper.title | append: ' ' | append: paper.authors | append: ' ' | append: paper.venue | append: ' ' | append: paper.status | append: ' ' | append: paper.topics | downcase | escape }}">
+  <div class="research-card__topline">
+    <span class="eyebrow">
+      {% case paper.type %}
+        {% when 'publication' %}Publication
+        {% when 'working-paper' %}Working paper
+        {% when 'work-in-progress' %}Work in progress
+        {% else %}{{ paper.type | replace: '-', ' ' | capitalize }}
+      {% endcase %}
+    </span>
+    {% if paper.year %}<span class="research-card__year">{{ paper.year }}</span>{% endif %}
+  </div>
+
+  <h3><a href="{{ paper.url | relative_url }}"{% if paper.language %} lang="{{ paper.language | escape }}"{% endif %}>{{ paper.title }}</a></h3>
+
+  {% if paper.authors %}
+    <p class="research-card__authors">{{ paper.authors | join: ', ' }}</p>
+  {% endif %}
+
+  {% if paper.venue or paper.status %}
+    <p class="research-card__venue">
+      {% if paper.venue %}<cite>{{ paper.venue }}</cite>{% endif %}
+      {% if paper.venue and paper.status %}<span aria-hidden="true"> · </span>{% endif %}
+      {% if paper.status %}{{ paper.status }}{% endif %}
+    </p>
+  {% endif %}
+
+  {% if paper.summary %}<p class="research-card__summary">{{ paper.summary }}</p>{% endif %}
+
+  {% if paper.topics %}
+    <ul class="tag-list" aria-label="Research topics">
+      {% for topic in paper.topics %}<li>{{ topic }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+
+  <div class="research-card__actions">
+    <a class="text-link" href="{{ paper.url | relative_url }}">Details <span aria-hidden="true">→</span></a>
+    {% for link in paper.links limit: 3 %}
+      <a class="text-link text-link--muted" href="{{ link.url }}">{{ link.label }} <span aria-hidden="true">↗</span></a>
+    {% endfor %}
+  </div>
+
+  {% if paper.awards %}
+    <div class="research-card__recognition">
+      <span aria-hidden="true">✦</span>
+      <span>{{ paper.awards | first }}</span>
+    </div>
+  {% endif %}
+</article>
