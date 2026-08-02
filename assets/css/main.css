@@ -403,6 +403,7 @@ h3 {
 }
 
 .hero-copy {
+  min-width: 0;
   max-width: 51rem;
 }
 
@@ -410,6 +411,7 @@ h3 {
   display: flex;
   align-items: center;
   gap: 1rem;
+  overflow-wrap: anywhere;
 }
 
 .hero-kicker::before {
@@ -545,6 +547,7 @@ h3 {
 }
 
 .hero-portrait {
+  min-width: 0;
   width: min(100%, 22rem);
   margin: 0;
   justify-self: end;
