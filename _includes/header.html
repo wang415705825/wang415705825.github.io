@@ -36,17 +36,10 @@
           {% endfor %}
         {% else %}
           <li><a href="{{ '/#about' | relative_url }}">About</a></li>
-          <li><a href="{{ '/#news' | relative_url }}">News</a></li>
           <li><a href="{{ '/research/' | relative_url }}"{% if page.url contains '/research/' %} aria-current="page"{% endif %}>Research</a></li>
-          <li><a href="{{ '/#experience' | relative_url }}">Experience</a></li>
-          <li><a href="{{ '/#teaching-service' | relative_url }}">Teaching &amp; Service</a></li>
-          <li><a href="{{ '/#honors' | relative_url }}">Honors</a></li>
           <li><a href="{{ '/resources/' | relative_url }}"{% if page.url contains '/resources/' %} aria-current="page"{% endif %}>Resources</a></li>
         {% endif %}
       </ul>
-      {% if profile.cv %}
-        <a class="button button--compact" href="{{ profile.cv | relative_url }}">CV <span aria-hidden="true">↗</span></a>
-      {% endif %}
     </nav>
   </div>
 </header>

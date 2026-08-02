@@ -34,7 +34,6 @@ description: >-
 
       <div class="hero-actions">
         <a class="button" href="{{ '/research/' | relative_url }}">Explore research <span aria-hidden="true">→</span></a>
-        {% if profile.cv %}<a class="button button--secondary" href="{{ profile.cv | relative_url }}">Download CV <span aria-hidden="true">↓</span></a>{% endif %}
       </div>
 
       <div class="hero-contact">
@@ -67,33 +66,6 @@ description: >-
   <div class="hero-rule" aria-hidden="true"><span></span></div>
 </section>
 
-{% assign sorted_news = site.news | sort: 'date' | reverse %}
-{% if sorted_news.size > 0 %}
-<section class="section section--compact" id="news" aria-labelledby="news-heading">
-  <div class="shell">
-    <div class="section-heading section-heading--split">
-      <div>
-        <p class="eyebrow">Current notes</p>
-        <h2 id="news-heading">News</h2>
-      </div>
-      <p class="section-intro">Recent publications, honors, and updates.</p>
-    </div>
-    <ol class="news-list">
-      {% for item in sorted_news limit: 5 %}
-        <li>
-          <time datetime="{{ item.date | date_to_xmlschema }}">{% if item.display_date %}{{ item.display_date }}{% else %}{{ item.date | date: '%b %Y' }}{% endif %}</time>
-          <div>
-            <h3>{{ item.title }}</h3>
-            {% if item.summary %}<p>{{ item.summary }}</p>{% endif %}
-          </div>
-          {% if item.source_url %}<a class="news-source" href="{{ item.source_url }}" aria-label="Source for {{ item.title | escape }}">{{ item.source_label | default: 'Source' }} <span aria-hidden="true">↗</span></a>{% endif %}
-        </li>
-      {% endfor %}
-    </ol>
-  </div>
-</section>
-{% endif %}
-
 {% assign featured_research = site.research | where: 'featured', true | sort: 'year' | reverse %}
 {% if featured_research.size > 0 %}
 <section class="section section--tinted" id="research" aria-labelledby="featured-research-heading">
@@ -111,117 +83,6 @@ description: >-
     <div class="research-grid research-grid--featured">
       {% for paper in featured_research limit: 6 %}{% include research-card.html paper=paper %}{% endfor %}
     </div>
-  </div>
-</section>
-{% endif %}
-
-{% if site.data.experience or site.data.education %}
-<section class="section" id="experience" aria-labelledby="experience-heading">
-  <div class="shell">
-    <div class="section-heading">
-      <p class="eyebrow">Academic path</p>
-      <h2 id="experience-heading">Experience &amp; education</h2>
-    </div>
-    <div class="timeline-columns">
-      {% if site.data.experience %}
-        <div>
-          <h3 class="subsection-title">Appointments</h3>
-          <ol class="timeline">
-            {% for item in site.data.experience %}
-              <li>
-                <p class="timeline__period">{{ item.period }}</p>
-                <h4>{{ item.role }}</h4>
-                <p>{% if item.institution_url %}<a href="{{ item.institution_url }}">{% endif %}{{ item.institution }}{% if item.institution_url %}</a>{% endif %}{% if item.location %}<span aria-hidden="true"> · </span>{{ item.location }}{% endif %}</p>
-              </li>
-            {% endfor %}
-          </ol>
-        </div>
-      {% endif %}
-      {% if site.data.education %}
-        <div>
-          <h3 class="subsection-title">Education</h3>
-          <ol class="timeline">
-            {% for item in site.data.education %}
-              <li>
-                <p class="timeline__period">{{ item.year }}</p>
-                <h4>{{ item.degree }}</h4>
-                <p>{% if item.institution_url %}<a href="{{ item.institution_url }}">{% endif %}{{ item.institution }}{% if item.institution_url %}</a>{% endif %}{% if item.location %}<span aria-hidden="true"> · </span>{{ item.location }}{% endif %}</p>
-              </li>
-            {% endfor %}
-          </ol>
-        </div>
-      {% endif %}
-    </div>
-  </div>
-</section>
-{% endif %}
-
-{% if site.data.teaching or site.data.service %}
-<section class="section section--charcoal" id="teaching-service" aria-labelledby="teaching-service-heading">
-  <div class="shell">
-    <div class="section-heading section-heading--light">
-      <p class="eyebrow eyebrow--light">Academic community</p>
-      <h2 id="teaching-service-heading">Teaching &amp; service</h2>
-    </div>
-    <div class="teaching-service-grid">
-      {% if site.data.teaching %}
-        <div>
-          <h3>Teaching</h3>
-          <div class="stack-list">
-            {% for item in site.data.teaching %}
-              <article>
-                <p class="meta-line">{{ item.institution }}{% if item.period %}<span aria-hidden="true"> · </span>{{ item.period }}{% endif %}</p>
-                <h4>{{ item.role }}</h4>
-                {% if item.courses %}
-                  <ul>
-                    {% for course in item.courses %}
-                      <li><span>{{ course.code }}</span> {{ course.title }}{% if course.terms %} <small>{{ course.terms }}</small>{% endif %}</li>
-                    {% endfor %}
-                  </ul>
-                {% endif %}
-              </article>
-            {% endfor %}
-          </div>
-        </div>
-      {% endif %}
-      {% if site.data.service %}
-        <div>
-          <h3>Selected service</h3>
-          <div class="stack-list">
-            {% for item in site.data.service %}
-              <article>
-                <p class="meta-line">{{ item.period }}</p>
-                <h4>{% if item.url %}<a href="{{ item.url }}">{% endif %}{{ item.role }}{% if item.url %}</a>{% endif %}</h4>
-                <p>{{ item.organization }}</p>
-              </article>
-            {% endfor %}
-          </div>
-        </div>
-      {% endif %}
-    </div>
-  </div>
-</section>
-{% endif %}
-
-{% if site.data.honors %}
-<section class="section" id="honors" aria-labelledby="honors-heading">
-  <div class="shell">
-    <div class="section-heading section-heading--split">
-      <div>
-        <p class="eyebrow">Recognition</p>
-        <h2 id="honors-heading">Selected honors</h2>
-      </div>
-      <p class="section-intro">Awards recognizing research, teaching, and professional contribution.</p>
-    </div>
-    <ol class="honors-grid">
-      {% for honor in site.data.honors limit: 8 %}
-        <li>
-          <span class="honor-date">{{ honor.date }}</span>
-          <h3>{% if honor.url %}<a href="{{ honor.url }}">{% endif %}{{ honor.title }}{% if honor.url %}</a>{% endif %}</h3>
-          {% if honor.organization %}<p>{{ honor.organization }}</p>{% endif %}
-        </li>
-      {% endfor %}
-    </ol>
   </div>
 </section>
 {% endif %}

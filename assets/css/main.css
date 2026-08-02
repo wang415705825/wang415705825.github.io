@@ -544,6 +544,12 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.hero-portrait {
+  width: min(100%, 22rem);
+  margin: 0;
+  justify-self: end;
+}
+
 .portrait-frame::before {
   position: absolute;
   top: -1.1rem;
@@ -558,10 +564,7 @@ h3 {
 
 .portrait-frame img {
   width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: center top;
-  filter: saturate(0.82) contrast(1.02);
+  height: auto;
 }
 
 .hero-portrait figcaption {
@@ -1586,7 +1589,8 @@ h3 {
   }
 
   .hero-portrait {
-    width: min(100%, 26rem);
+    width: min(84vw, 19rem);
+    justify-self: center;
   }
 
   .hero-sidenote {
