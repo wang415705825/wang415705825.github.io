@@ -32,5 +32,10 @@ jobs:
           JEKYLL_ENV: production
         run: bundle exec jekyll build --strict_front_matter
 
+      - name: Confirm hidden CV is not published
+        run: |
+          test ! -e ./_site/assets/Chongyu_Wang_CV.pdf
+          ! grep -Fq "/assets/Chongyu_Wang_CV.pdf" ./_site/sitemap.xml
+
       - name: Check internal links and rendered HTML
         run: bundle exec htmlproofer ./_site --disable-external
