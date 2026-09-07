@@ -1,6 +1,6 @@
 ---
 layout: research
-title: "Bankruptcy Court Backlogs and Corporate Lease Pricing"
+title: "Recovery Rights, Court Efficiency, and Corporate Lease Pricing"
 slug: bankruptcy-court-backlogs-lease-pricing
 permalink: /research/bankruptcy-court-backlogs-lease-pricing/
 authors:

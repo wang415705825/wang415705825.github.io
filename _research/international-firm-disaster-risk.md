@@ -9,7 +9,7 @@ authors:
   - Martin Hoesli
 year: 2023
 type: working-paper
-status: Working paper
+status: Under review
 venue: Swiss Finance Institute Research Paper No. 23-16
 topics:
   - Real Estate
