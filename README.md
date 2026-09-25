@@ -7,10 +7,11 @@ The source for [wang415705825.github.io](https://wang415705825.github.io), built
 Most routine updates do not require editing HTML.
 
 - **Research:** add one file to `_research/` with `title`, `slug`, `permalink`, `authors`, `year`, `type`, `status`, `topics`, `featured`, and a concise verified `summary`; `venue`, `links`, `awards`, and `funding` are optional. Use one of `publication`, `working-paper`, or `work-in-progress` for `type`. A paper at `_research/example.md` should use `/research/example/` as its permalink.
-- **News:** add a dated file to `_news/` with `title`, `date`, `display_date`, `summary`, `source_label`, and `source_url`. The five newest items appear on the homepage.
+- **Research statement:** edit the narrative, theme order, and paper slugs in `_data/research_statement.yml`. Paper titles, years, statuses, and summaries are resolved from `_research/`; do not duplicate them in the statement data.
+- **News:** `_news/` is retained as source data but is not generated or displayed. Do not restore News without an explicit request.
 - **Resources:** add a file to `_resources/` with `title`, `category`, `summary`, `order`, and an optional `external_url`. Every resource automatically receives a page at `/resources/<filename>/`.
-- **Profile and CV:** edit `_data/profile.yml`. Replace `assets/Chongyu_Wang_CV.pdf` with the reviewed current CV while keeping the stable filename.
-- **Appointments, teaching, service, honors, and code:** edit the corresponding YAML file in `_data/`.
+- **Profile and CV:** edit `_data/profile.yml` for public profile fields. The retained CV file is excluded from the build and must remain unlinked unless its publication is explicitly requested.
+- **Appointments, teaching, service, and honors:** their YAML files are retained as source data, but their public sections are disabled. Update source facts if needed without restoring those sections. Code projects remain public through `_data/code.yml`.
 - **Navigation:** edit `_data/navigation.yml` when a new top-level page should appear in the shared header.
 
 To add a standalone subpage, create a Markdown file with YAML front matter. The shared page layout is applied automatically. For example:

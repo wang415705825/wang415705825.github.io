@@ -1,0 +1,81 @@
+---
+layout: default
+title: Research Statement
+description: >-
+  Chongyu Wang's research agenda on how place, risk, and technology shape
+  real asset markets, capital allocation, and the changing demand for space.
+permalink: /research-statement/
+---
+{% assign statement = site.data.research_statement %}
+
+<header class="page-hero statement-hero section">
+  <div class="shell shell--narrow-left">
+    <p class="eyebrow">Research statement</p>
+    <h1>How place, risk, and technology shape real asset markets.</h1>
+    <div class="statement-hero__intro">{{ statement.intro | markdownify }}</div>
+  </div>
+</header>
+
+<nav class="statement-jump section section--compact section--tinted" aria-label="Research themes">
+  <ol class="shell statement-jump__list">
+    {% for theme in statement.themes %}
+      <li>
+        <a class="statement-jump__link" href="#theme-{{ theme.number }}">
+          <span class="statement-jump__number" aria-hidden="true">{{ theme.number }}</span>
+          <span class="statement-jump__title">{{ theme.title }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ol>
+</nav>
+
+<div class="statement-flow">
+  {% for theme in statement.themes %}
+    <section class="statement-theme section" id="theme-{{ theme.number }}" aria-labelledby="theme-heading-{{ theme.number }}">
+      <div class="shell statement-theme__grid">
+        <header class="statement-theme__copy">
+          <span class="statement-theme__index" aria-hidden="true">{{ theme.number }}</span>
+          <p class="eyebrow">Research theme</p>
+          <h2 id="theme-heading-{{ theme.number }}">{{ theme.title }}</h2>
+          <p class="statement-theme__question">{{ theme.core_question }}</p>
+          <div class="statement-theme__narrative">
+            {% for paragraph in theme.paragraphs %}{{ paragraph | markdownify }}{% endfor %}
+          </div>
+        </header>
+
+        <div class="statement-theme__papers" role="group" aria-label="Selected papers for {{ theme.title | escape }}">
+          {% for paper_slug in theme.papers %}
+            {% assign matched_papers = site.research | where: 'slug', paper_slug %}
+            {% assign paper = matched_papers | first %}
+            {% include research-statement-paper.html paper=paper %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+</div>
+
+<section class="statement-future section section--garnet" aria-labelledby="future-agenda-heading">
+  <div class="shell statement-future__grid">
+    <div>
+      <p class="eyebrow eyebrow--light">Forward agenda</p>
+      <h2 id="future-agenda-heading">{{ statement.future_agenda.title }}</h2>
+      <div class="statement-future__body">{{ statement.future_agenda.text | markdownify }}</div>
+    </div>
+
+    <aside class="statement-future__projects" aria-label="Current projects">
+      <p class="eyebrow eyebrow--light">Current projects</p>
+      <ul>
+        {% for paper_slug in statement.future_agenda.projects %}
+          {% assign matched_papers = site.research | where: 'slug', paper_slug %}
+          {% assign paper = matched_papers | first %}
+          <li><a href="{{ paper.url | relative_url }}">{{ paper.title }} <span aria-hidden="true">→</span></a></li>
+        {% endfor %}
+      </ul>
+    </aside>
+  </div>
+
+  <div class="shell statement-future__cta">
+    <a class="button button--light" href="{{ '/research/' | relative_url }}">View the complete research catalogue <span aria-hidden="true">→</span></a>
+  </div>
+</section>
