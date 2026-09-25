@@ -1,0 +1,29 @@
+{% assign paper = include.paper %}
+<article class="statement-paper">
+  <div class="statement-paper__meta">
+    <span class="eyebrow">
+      {% case paper.type %}
+        {% when 'publication' %}Publication
+        {% when 'working-paper' %}Working paper
+        {% when 'work-in-progress' %}Work in progress
+        {% else %}{{ paper.type | replace: '-', ' ' | capitalize }}
+      {% endcase %}
+    </span>
+    {% if paper.year %}<span class="statement-paper__year">{{ paper.year }}</span>{% endif %}
+  </div>
+
+  <h3 class="statement-paper__title">
+    <a href="{{ paper.url | relative_url }}">{{ paper.title }}</a>
+  </h3>
+
+  {% if paper.venue or paper.status %}
+    <p class="statement-paper__status">
+      {% if paper.venue %}<cite>{{ paper.venue }}</cite>{% endif %}
+      {% if paper.venue and paper.status %}<span aria-hidden="true"> · </span>{% endif %}
+      {% if paper.status %}{{ paper.status }}{% endif %}
+    </p>
+  {% endif %}
+
+  {% if paper.summary %}<p class="statement-paper__summary">{{ paper.summary }}</p>{% endif %}
+  <a class="text-link" href="{{ paper.url | relative_url }}" aria-label="Details for {{ paper.title | escape }}">Details <span aria-hidden="true">→</span></a>
+</article>

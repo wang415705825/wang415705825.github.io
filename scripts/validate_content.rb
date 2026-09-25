@@ -91,6 +91,77 @@ errors << "research inventory has #{research_records.length} items, expected at 
 featured_count = research_records.count { |_path, data| data["featured"] == true }
 errors << "featured research count is #{featured_count}, expected exactly 6" unless featured_count == 6
 
+statement_path = File.join(ROOT, "_data", "research_statement.yml")
+if File.file?(statement_path)
+  begin
+    statement = YAML.safe_load(File.read(statement_path, encoding: "UTF-8"), permitted_classes: [Date], aliases: true) || {}
+    unless statement.is_a?(Hash)
+      errors << "_data/research_statement.yml: expected a mapping"
+    else
+      errors << "_data/research_statement.yml: missing intro" unless present?(statement["intro"])
+
+      themes = statement["themes"]
+      if !themes.is_a?(Array)
+        errors << "_data/research_statement.yml: themes must be a list"
+      else
+        errors << "_data/research_statement.yml: expected exactly 3 themes" unless themes.length == 3
+        theme_numbers = themes.map { |theme| theme.is_a?(Hash) ? theme["number"].to_s : nil }
+        errors << "_data/research_statement.yml: theme numbers must be 01, 02, 03 in order" unless theme_numbers == %w[01 02 03]
+
+        selected_slugs = []
+        themes.each_with_index do |theme, index|
+          context = "_data/research_statement.yml theme #{index + 1}"
+          unless theme.is_a?(Hash)
+            errors << "#{context}: expected a mapping"
+            next
+          end
+
+          %w[number title core_question paragraphs papers].each do |field|
+            errors << "#{context}: missing #{field}" unless present?(theme[field])
+          end
+          unless theme["paragraphs"].is_a?(Array) && theme["paragraphs"].all? { |paragraph| present?(paragraph) }
+            errors << "#{context}: paragraphs must be a non-empty list of text"
+          end
+          unless theme["papers"].is_a?(Array) && theme["papers"].all? { |slug| present?(slug) }
+            errors << "#{context}: papers must be a non-empty list of slugs"
+            next
+          end
+          selected_slugs.concat(theme["papers"])
+        end
+
+        errors << "_data/research_statement.yml: expected exactly 9 selected papers" unless selected_slugs.length == 9
+        errors << "_data/research_statement.yml: selected paper slugs must be unique" unless selected_slugs.uniq.length == selected_slugs.length
+        known_slugs = research_records.map { |_path, data| data["slug"] }
+        (selected_slugs - known_slugs).each do |slug|
+          errors << "_data/research_statement.yml: unknown selected paper slug #{slug.inspect}"
+        end
+
+        future_agenda = statement["future_agenda"]
+        if !future_agenda.is_a?(Hash)
+          errors << "_data/research_statement.yml: future_agenda must be a mapping"
+        else
+          %w[title text projects].each do |field|
+            errors << "_data/research_statement.yml future_agenda: missing #{field}" unless present?(future_agenda[field])
+          end
+          projects = future_agenda["projects"]
+          unless projects.is_a?(Array) && projects.length == 3 && projects.all? { |slug| present?(slug) }
+            errors << "_data/research_statement.yml future_agenda: projects must contain exactly 3 slugs"
+          else
+            errors << "_data/research_statement.yml future_agenda: project slugs must be unique" unless projects.uniq.length == projects.length
+            (projects - known_slugs).each do |slug|
+              errors << "_data/research_statement.yml: unknown future project slug #{slug.inspect}"
+            end
+          end
+        end
+      end
+    end
+  rescue StandardError => e
+    errors << "_data/research_statement.yml: #{e.message}"
+  end
+else
+  errors << "_data/research_statement.yml: file is missing"
+end
+
 files_in("_news", ".md").each do |path|
   relative = path.delete_prefix(ROOT + "/")
   begin

@@ -1,5 +1,7 @@
 - label: "About"
   url: "/#about"
+- label: "Research Statement"
+  url: "/research-statement/"
 - label: "Research"
   url: "/research/"
 - label: "Resources"

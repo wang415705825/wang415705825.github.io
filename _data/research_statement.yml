@@ -1,0 +1,124 @@
+intro: >-
+  My research examines how place, risk, and technology shape real asset
+  markets. I begin from a simple premise: place is not a passive backdrop
+  for economic activity. It organizes how information travels, where risks
+  are concentrated, how capital is allocated, and where new technologies
+  alter the demand for space. My current agenda therefore connects climate
+  risk, artificial intelligence, overlapping real asset networks, and the
+  changing use of offices and other commercial properties. Rather than
+  treating these topics as separate market episodes, I study how localized
+  exposures are reflected in the decisions and outcomes of firms, investors,
+  tenants, insurers, and asset markets. Real estate provides an especially
+  useful empirical setting because physical assets are fixed in place while
+  their owners, users, and sources of financing operate through broader
+  networks. This tension allows me to connect local conditions to corporate
+  decisions and capital-market outcomes. Across these projects, I move
+  between property, firm, and market outcomes while matching the strength
+  of each claim to the underlying research design.
+
+themes:
+  - number: "01"
+    title: "Places as information and capital networks"
+    core_question: >-
+      How do location and overlapping real asset networks shape information
+      advantages, asset prices, and corporate investment and financing?
+    paragraphs:
+      - >-
+        I first study the connections created by firms’ physical footprints.
+        *Overlapping Real Asset Networks and Corporate Investment* examines
+        how overlapping corporate real asset networks relate to investment
+        and debt issuance, including a collateral channel tied to corporate
+        real estate holdings. *Granular Risks and Stock Returns* uses a
+        geographic instrumental variable to identify how idiosyncratic
+        shocks in local property markets are capitalized into listed
+        commercial real estate returns.
+      - >-
+        This line of work builds on *The Geography of Real Property
+        Information and Investment*, which shows that institutional
+        investors use location-based information advantages when allocating
+        to REITs and that this strategy is associated with superior
+        performance. Together, these projects connect the geography of
+        information to asset prices and then to the investment and financing
+        choices of firms linked through real asset markets.
+    papers:
+      - overlapping-real-asset-networks
+      - granular-risks-stock-returns
+      - geography-real-property-information-investment
+
+  - number: "02"
+    title: "Risk, resilience, and the built environment"
+    core_question: >-
+      How are climate, health, and disaster-related risks reflected in
+      insurance costs, property-market outcomes, and investment in the built
+      environment?
+    paragraphs:
+      - >-
+        A second strand asks how emerging risks are absorbed by properties
+        and the institutions around them. *Climate Risk and Commercial
+        Property Insurance* analyzes insurance costs across major U.S.
+        commercial real estate sectors, their responses to expected and
+        realized climate risk, and the incidence of higher premiums. *The
+        Rise of Healthy Buildings* documents a post-pandemic shift toward
+        health-oriented commercial buildings and links healthy-building
+        exposure to investment, performance, and mobility.
+      - >-
+        Earlier work establishes the market context for these questions.
+        *Climate Change and Commercial Property Markets* shows that the
+        capital-market effects of local climate hazards vary with attention
+        to climate change, producing a mismatch between physical hazards and
+        market responses. *A First Look at the Impact of COVID-19 on
+        Commercial Real Estate Prices* examines how local pandemic exposure,
+        policy interventions, and reopenings were reflected in commercial
+        real estate firms’ stock returns.
+    papers:
+      - climate-risk-commercial-property-insurance
+      - rise-healthy-buildings
+      - climate-change-commercial-property-markets
+      - a-first-look-covid-cre-prices
+
+  - number: "03"
+    title: "Technology and the changing demand for space"
+    core_question: >-
+      How do generative AI and remote and hybrid work reshape demand for
+      commercial space and the outcomes of real asset firms?
+    paragraphs:
+      - >-
+        My third theme studies how changes in work and production reshape
+        the demand for commercial space. *The Disruption of Generative AI in
+        Real Asset Markets* examines how exposure to generative AI is related
+        to tenant rents, listed real estate valuations, analyst forecasts,
+        and operating performance, with labor substitution and reallocation
+        providing the paper’s organizing channels.
+      - >-
+        *Office Leasing Resilience in the Remote and Hybrid Era* asks whether
+        sustainable building attributes and vibrant urban locations support
+        leasing resilience in a mature remote- and hybrid-work market.
+        Together, these projects examine two related transformations:
+        technology can alter firms’ uses of labor and space, while building
+        quality and location may help determine which offices remain
+        attractive as workplace practices change.
+    papers:
+      - generative-ai-real-asset-markets
+      - office-leasing-resilience
+
+future_agenda:
+  title: "Where the agenda is going"
+  text: >-
+    My next projects extend this agenda across technology, disaster risk,
+    and contracting institutions. *Disrupted Spaces: How Automation and
+    Artificial Intelligence Reshape Corporate Real Estate* studies how
+    firms’ exposure to automation and artificial intelligence is associated
+    with changes in their corporate real estate footprints. *Sharing the
+    Disaster Risk: Evidence from the Commercial Real Estate Market*
+    investigates how disaster risk is shared and priced in commercial real
+    estate markets. *Recovery Rights, Court Efficiency, and Corporate Lease
+    Pricing* examines how congestion in bankruptcy courts may affect the
+    pricing of corporate leases. Together, these projects continue my
+    broader effort to understand how place-specific exposures interact with
+    firm decisions, contractual arrangements, and capital markets, while
+    preserving a clear distinction between documented relationships and
+    causal evidence.
+  projects:
+    - automation-ai-corporate-real-estate
+    - sharing-disaster-risk
+    - bankruptcy-court-backlogs-lease-pricing

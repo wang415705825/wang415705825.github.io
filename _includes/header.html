@@ -36,6 +36,7 @@
           {% endfor %}
         {% else %}
           <li><a href="{{ '/#about' | relative_url }}">About</a></li>
+          <li><a href="{{ '/research-statement/' | relative_url }}"{% if page.url == '/research-statement/' %} aria-current="page"{% endif %}>Research Statement</a></li>
           <li><a href="{{ '/research/' | relative_url }}"{% if page.url contains '/research/' %} aria-current="page"{% endif %}>Research</a></li>
           <li><a href="{{ '/resources/' | relative_url }}"{% if page.url contains '/resources/' %} aria-current="page"{% endif %}>Resources</a></li>
         {% endif %}
