@@ -1,14 +1,14 @@
 title: "Chongyu (Michael) Wang"
 description: >-
-  Academic website of Chongyu (Michael) Wang, Assistant Professor and Francis
-  Nardozza Fellow of Real Estate at Florida State University.
+  Academic website of Chongyu (Michael) Wang, Dean & Kathy Gatzlaff Assistant
+  Professor of Real Estate at Florida State University.
 url: "https://wang415705825.github.io"
 baseurl: ""
 lang: en
 timezone: America/New_York
 repository: wang415705825/wang415705825.github.io
 logo: /assets/images/chongyu-wang.jpg
-social_image: /assets/images/social-card.png
+social_image: /assets/images/social-card-2026.png
 
 markdown: kramdown
 permalink: pretty
@@ -50,6 +50,7 @@ liquid:
   error_mode: strict
 
 exclude:
+  - assets/Chongyu_Wang_CV.pdf
   - Gemfile
   - Gemfile.lock
   - README.md

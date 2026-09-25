@@ -19,11 +19,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Configure GitHub Pages
         id: pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -38,11 +38,16 @@ jobs:
           JEKYLL_ENV: production
         run: bundle exec jekyll build --strict_front_matter --baseurl "${{ steps.pages.outputs.base_path }}"
 
+      - name: Confirm hidden CV is not published
+        run: |
+          test ! -e ./_site/assets/Chongyu_Wang_CV.pdf
+          ! grep -Fq "/assets/Chongyu_Wang_CV.pdf" ./_site/sitemap.xml
+
       - name: Check internal links and rendered HTML
         run: bundle exec htmlproofer ./_site --disable-external
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./_site
 
@@ -55,4 +60,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

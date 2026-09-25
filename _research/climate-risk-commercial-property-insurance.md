@@ -10,7 +10,7 @@ authors:
   - Tingyu Zhou
 year: 2025
 type: working-paper
-status: Working paper
+status: Under review
 topics:
   - Real Estate
   - Investment
@@ -20,4 +20,6 @@ summary: "Analyzes insurance costs across major U.S. commercial real estate sect
 links:
   - label: SSRN
     url: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5841862
+  - label: Research Square preprint
+    url: https://doi.org/10.21203/rs.3.rs-10619242/v1
 ---

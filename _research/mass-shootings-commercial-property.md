@@ -9,7 +9,8 @@ authors:
   - Tingyu Zhou
 year: 2026
 type: working-paper
-status: Under review
+status: Revise and resubmit
+venue: Journal of Regional Science
 topics:
   - Real Estate
   - Investment
