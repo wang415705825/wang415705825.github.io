@@ -8,8 +8,8 @@ authors:
   - Ke Xu
   - Tingyu Zhou
 year: 2026
-type: working-paper
-status: Revise and resubmit
+type: publication
+status: Accepted
 venue: Journal of Regional Science
 topics:
   - Real Estate
