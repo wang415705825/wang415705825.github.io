@@ -5,6 +5,6 @@
   url: "https://github.com/wang415705825/Geo-COVID"
 - name: "Real-Estate-Returns"
   description: >-
-    Unlevered and property-portfolio return data used in research on asset
-    productivity, information diffusion, and commercial real estate returns.
+    Quarterly unlevered and levered U.S. equity REIT return indices,
+    1993Q1–2025Q4, with construction code and documentation.
   url: "https://github.com/wang415705825/Real-Estate-Returns"
