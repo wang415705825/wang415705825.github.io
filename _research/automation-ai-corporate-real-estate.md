@@ -1,6 +1,6 @@
 ---
 layout: research
-title: "Disrupted Spaces: How Automation and Artificial Intelligence Reshape Corporate Real Estate"
+title: "Disrupted Spaces: How Automation and Artificial Intelligence Reshape Corporate Real Estate Demand"
 slug: automation-ai-corporate-real-estate
 permalink: /research/automation-ai-corporate-real-estate/
 authors:

@@ -1,6 +1,6 @@
 ---
 layout: research
-title: "Office Leasing Resilience in the Remote and Hybrid Era: The Role of Sustainability and Urbanity"
+title: "Green Offices, Hybrid Workers, and the Flight to Quality"
 slug: office-leasing-resilience
 permalink: /research/office-leasing-resilience/
 authors:
