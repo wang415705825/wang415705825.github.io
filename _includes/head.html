@@ -26,14 +26,17 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ meta_title | escape }}">
 <meta name="twitter:description" content="{{ meta_description | escape }}">
-{% if site.social_image %}
-  {% assign social_image_url = site.social_image | absolute_url %}
+{% assign social_image = page.social_image | default: site.social_image %}
+{% if social_image %}
+  {% assign social_image_url = social_image | absolute_url %}
+  {% capture default_social_alt %}Academic website of {{ profile.name | default: site.title }}{% endcapture %}
+  {% assign social_image_alt = page.social_image_alt | default: default_social_alt %}
   <meta property="og:image" content="{{ social_image_url }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Academic website of {{ profile.name | default: site.title | escape }}">
+  <meta property="og:image:alt" content="{{ social_image_alt | escape }}">
   <meta name="twitter:image" content="{{ social_image_url }}">
-  <meta name="twitter:image:alt" content="Academic website of {{ profile.name | default: site.title | escape }}">
+  <meta name="twitter:image:alt" content="{{ social_image_alt | escape }}">
 {% endif %}
 
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">

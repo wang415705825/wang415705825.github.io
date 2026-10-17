@@ -1612,6 +1612,25 @@ h3 {
   line-height: 1.55;
 }
 
+.data-figure {
+  margin: 2.5rem 0;
+}
+
+.data-figure img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fcfcfb;
+}
+
+.data-figure figcaption {
+  margin-top: 0.75rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
 .detail-note {
   margin-top: 2.5rem;
   padding: 1.25rem 1.5rem;
