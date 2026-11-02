@@ -1,6 +1,6 @@
 ---
 layout: research
-title: "Are Mass Shootings a Risk Factor? Evidence from Commercial Property Markets"
+title: "Are Mass Shootings a Risk Factor? Evidence From Commercial Property Markets"
 slug: mass-shootings-commercial-property
 permalink: /research/mass-shootings-commercial-property/
 authors:
@@ -9,7 +9,7 @@ authors:
   - Tingyu Zhou
 year: 2026
 type: publication
-status: Accepted
+status: Published
 venue: Journal of Regional Science
 topics:
   - Real Estate
@@ -17,6 +17,8 @@ topics:
 featured: false
 summary: "Traces the effects of mass shootings from local commercial leasing fundamentals to exposed real estate firms' valuations and longer-run operating performance."
 links:
+  - label: Journal article
+    url: https://doi.org/10.1111/jors.70102
   - label: SSRN
     url: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5540498
 ---
