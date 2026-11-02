@@ -10,7 +10,7 @@ authors:
   - Tingyu Zhou
 year: 2025
 type: working-paper
-status: Under review
+status: "R&R, Journal of Real Estate Finance and Economics"
 topics:
   - Real Estate
   - Investment
